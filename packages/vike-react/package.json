@@ -1,0 +1,61 @@
+{
+  "private": true,
+  "name": "vike-react",
+  "version": "0.3.4",
+  "type": "module",
+  "main": "./dist/renderer/+config.js",
+  "types": "./dist/renderer/+config.d.ts",
+  "exports": {
+    ".": "./dist/renderer/+config.js",
+    "./renderer/onRenderHtml": "./dist/renderer/onRenderHtml.js",
+    "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js",
+    "./usePageContext": "./dist/components/usePageContext.js"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "rm -rf dist/ && tsc",
+    "release": "release-me patch",
+    "release:commit": "release-me commit"
+  },
+  "peerDependencies": {
+    "react": "18.x.x",
+    "react-dom": "18.x.x",
+    "vike": "^0.4.147",
+    "vite": "^4.3.8"
+  },
+  "devDependencies": {
+    "@brillout/release-me": "^0.1.9",
+    "@types/node": "^18.17.18",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.2.2",
+    "vike": "^0.4.147"
+  },
+  "dependencies": {
+    "react-streaming": "^0.3.16"
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/renderer/+config.d.ts"
+      ],
+      "usePageContext": [
+        "./dist/components/usePageContext.d.ts"
+      ],
+      "renderer/onRenderHtml": [
+        "./dist/renderer/onRenderHtml.d.ts"
+      ],
+      "renderer/onRenderClient": [
+        "./dist/renderer/onRenderClient.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist/",
+    "types.d.ts"
+  ],
+  "repository": "github:vikejs/vike-react",
+  "license": "MIT"
+}

@@ -1,14 +1,13 @@
 {
-  "name": "vike-react",
+  "private": true,
+  "name": "vike-react-query",
   "version": "0.3.4",
   "type": "module",
   "main": "./dist/renderer/+config.js",
   "types": "./dist/renderer/+config.d.ts",
   "exports": {
     ".": "./dist/renderer/+config.js",
-    "./renderer/onRenderHtml": "./dist/renderer/onRenderHtml.js",
-    "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js",
-    "./usePageContext": "./dist/components/usePageContext.js"
+    "./renderer/onBeforeRender": "./dist/renderer/onBeforeRender.js"
   },
   "scripts": {
     "dev": "tsc --watch",
@@ -33,21 +32,18 @@
     "vike": "^0.4.147"
   },
   "dependencies": {
-    "react-streaming": "^0.3.16"
+    "react-streaming": "^0.3.16",
+    "@tanstack/react-query": "^5.8.4",
+    "devalue": "^4.3.2",
+    "vike-react": "workspace:*"
   },
   "typesVersions": {
     "*": {
       ".": [
         "./dist/renderer/+config.d.ts"
       ],
-      "usePageContext": [
-        "./dist/components/usePageContext.d.ts"
-      ],
-      "renderer/onRenderHtml": [
-        "./dist/renderer/onRenderHtml.d.ts"
-      ],
-      "renderer/onRenderClient": [
-        "./dist/renderer/onRenderClient.d.ts"
+      "renderer/onBeforeRender": [
+        "./dist/renderer/onBeforeRender.d.ts"
       ]
     }
   },

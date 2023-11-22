@@ -4,7 +4,7 @@ export { onRenderHtml }
 import { renderToString } from 'react-dom/server'
 import { renderToStream } from 'react-streaming/server'
 import { escapeInject, dangerouslySkipEscape, version } from 'vike/server'
-import type { OnRenderHtmlAsync } from 'vike/types'
+import type { OnRenderHtmlAsync, PageContextServer } from 'vike/types'
 import { getTitle } from './getTitle.js'
 import { getPageElement } from './getPageElement.js'
 import { PageContextProvider } from './PageContextProvider.js'
