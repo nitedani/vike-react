@@ -17,6 +17,9 @@
     "overrides": {
       "vike-react": "link:./packages/vike-react/",
       "vike-react-query": "link:./packages/vike-react-query/"
+    },
+    "patchedDependencies": {
+      "vike@0.4.147": "patches/vike@0.4.147.patch"
     }
   },
   "packageManager": "pnpm@8.6.12",

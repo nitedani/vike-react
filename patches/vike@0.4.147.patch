@@ -1,0 +1,26 @@
+diff --git a/dist/esm/node/runtime/html/injectAssets/inferHtmlTags.js b/dist/esm/node/runtime/html/injectAssets/inferHtmlTags.js
+index da3ad7b109527e390660f43f2cda6107276a2e9a..b2cb6e4c545b40929a92277f8b7069994cfeb5e8 100644
+--- a/dist/esm/node/runtime/html/injectAssets/inferHtmlTags.js
++++ b/dist/esm/node/runtime/html/injectAssets/inferHtmlTags.js
+@@ -24,7 +24,7 @@ function inferAssetTag(pageAsset) {
+         // Using <script async> seems problematic:
+         //  - in dev: https://github.com/vikejs/vike/issues/524
+         //  - in prod: https://github.com/vikejs/vike/issues/567
+-        return `<script type="module" src="${src}" defer></script>`;
++        return `<script type="module" src="${src}" async></script>`;
+     }
+     if (assetType === 'style') {
+         return `<link rel="stylesheet" type="text/css" href="${src}">`;
+diff --git a/dist/esm/node/runtime/html/injectAssets/mergeScriptTags.js b/dist/esm/node/runtime/html/injectAssets/mergeScriptTags.js
+index 51412d378f3c0e3f1f3c3d949846a5ece8e442ba..aab14c68bff73bc76e649de0d530a273ff71ef38 100755
+--- a/dist/esm/node/runtime/html/injectAssets/mergeScriptTags.js
++++ b/dist/esm/node/runtime/html/injectAssets/mergeScriptTags.js
+@@ -32,7 +32,7 @@ function mergeScriptTags(scriptTagsHtml, isProduction) {
+                 }
+             });
+             if (contents.length > 0) {
+-                scriptTag += `<script type="module" defer>\n${contents.join('\n')}\n</script>`;
++                scriptTag += `<script type="module" async>\n${contents.join('\n')}\n</script>`;
+             }
+         }
+     }

@@ -28,7 +28,7 @@ function Movies() {
   )
 }
 async function getStarWarsMovies(): Promise<MovieDetails[]> {
-  await new Promise((r) => setTimeout(r, 1000))
+  await new Promise((r) => setTimeout(r, 5000))
 
   const response = await fetch('https://star-wars.brillout.com/api/films.json')
   let movies: MovieDetails[] = ((await response.json()) as any).results

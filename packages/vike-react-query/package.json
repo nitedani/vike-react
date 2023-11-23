@@ -3,10 +3,10 @@
   "name": "vike-react-query",
   "version": "0.3.4",
   "type": "module",
-  "main": "dist/src/index.js",
-  "typings": "dist/src/index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.js",
   "exports": {
-    ".": "./dist/src/index.js",
+    ".": "./dist/index.js",
     "./config": "./dist/renderer/+config.h.js",
     "./renderer/internalOnBeforeRenderAll": "./dist/renderer/internalOnBeforeRenderAll.js"
   },
@@ -41,9 +41,6 @@
   },
   "typesVersions": {
     "*": {
-      ".": [
-        "dist/src/index.d.ts"
-      ],
       "config": [
         "dist/renderer/+config.h.d.ts"
       ],
@@ -53,8 +50,7 @@
     }
   },
   "files": [
-    "dist/",
-    "types.d.ts"
+    "dist"
   ],
   "repository": "github:vikejs/vike-react",
   "license": "MIT"

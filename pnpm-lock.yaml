@@ -8,6 +8,11 @@ overrides:
   vike-react: link:./packages/vike-react/
   vike-react-query: link:./packages/vike-react-query/
 
+patchedDependencies:
+  vike@0.4.147:
+    hash: atifivqid3zu6zpx7vbfxb4yl4
+    path: patches/vike@0.4.147.patch
+
 importers:
 
   .:
@@ -44,7 +49,7 @@ importers:
         version: 5.3.2
       vike:
         specifier: ^0.4.147
-        version: 0.4.147(react-streaming@0.3.16)(vite@4.5.0)
+        version: 0.4.147(patch_hash=atifivqid3zu6zpx7vbfxb4yl4)(react-streaming@0.3.16)(vite@4.5.0)
       vike-react:
         specifier: link:../../packages/vike-react
         version: link:../../packages/vike-react
@@ -83,7 +88,7 @@ importers:
         version: 5.3.2
       vike:
         specifier: ^0.4.147
-        version: 0.4.147(react-streaming@0.3.16)(vite@4.5.0)
+        version: 0.4.147(patch_hash=atifivqid3zu6zpx7vbfxb4yl4)(react-streaming@0.3.16)(vite@4.5.0)
       vike-react:
         specifier: link:../../packages/vike-react
         version: link:../../packages/vike-react
@@ -116,7 +121,7 @@ importers:
         version: 5.3.2
       vike:
         specifier: ^0.4.147
-        version: 0.4.147(react-streaming@0.3.16)(vite@4.5.0)
+        version: 0.4.147(patch_hash=atifivqid3zu6zpx7vbfxb4yl4)(react-streaming@0.3.16)(vite@4.5.0)
       vike-react:
         specifier: link:../../packages/vike-react
         version: link:../../packages/vike-react
@@ -159,7 +164,7 @@ importers:
         version: 5.3.2
       vike:
         specifier: ^0.4.147
-        version: 0.4.147(react-streaming@0.3.16)(vite@4.5.0)
+        version: 0.4.147(patch_hash=atifivqid3zu6zpx7vbfxb4yl4)(react-streaming@0.3.16)(vite@4.5.0)
 
   packages/vike-react-query:
     dependencies:
@@ -205,7 +210,7 @@ importers:
         version: 5.3.2
       vike:
         specifier: ^0.4.147
-        version: 0.4.147(react-streaming@0.3.16)(vite@4.5.0)
+        version: 0.4.147(patch_hash=atifivqid3zu6zpx7vbfxb4yl4)(react-streaming@0.3.16)(vite@4.5.0)
 
 packages:
 
@@ -1955,7 +1960,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vike@0.4.147(react-streaming@0.3.16)(vite@4.5.0):
+  /vike@0.4.147(patch_hash=atifivqid3zu6zpx7vbfxb4yl4)(react-streaming@0.3.16)(vite@4.5.0):
     resolution: {integrity: sha512-TNkIJY+jydz3cL4UGT58annjIAH7a5Rv0hu5clMMuBnC39S5ArsCF0mAZrHKsMa5mV6HwlW6j3mmVWw2kKVcBw==}
     engines: {node: '>=16.0.0'}
     hasBin: true
@@ -1980,6 +1985,7 @@ packages:
       sirv: 2.0.3
       source-map-support: 0.5.21
       vite: 4.5.0(@types/node@18.18.12)
+    patched: true
 
   /vite@4.5.0(@types/node@18.18.12):
     resolution: {integrity: sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==}
