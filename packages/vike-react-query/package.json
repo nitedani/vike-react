@@ -3,11 +3,13 @@
   "name": "vike-react-query",
   "version": "0.3.4",
   "type": "module",
-  "main": "./dist/renderer/+config.js",
-  "types": "./dist/renderer/+config.d.ts",
+  "main": "./dist/src/query.js",
+  "types": "./dist/src/query.d.ts",
   "exports": {
-    ".": "./dist/renderer/+config.js",
-    "./renderer/onBeforeRender": "./dist/renderer/onBeforeRender.js"
+    ".": "./dist/src/query.js",
+    "./config": "./dist/renderer/+config.h.js",
+    "./renderer/onBeforeRender": "./dist/renderer/onBeforeRender.js",
+    "./renderer/client": "./dist/renderer/client.js"
   },
   "scripts": {
     "dev": "tsc --watch",
@@ -35,15 +37,22 @@
     "react-streaming": "^0.3.16",
     "@tanstack/react-query": "^5.8.4",
     "devalue": "^4.3.2",
+    "@brillout/json-serializer": "^0.5.8",
     "vike-react": "workspace:*"
   },
   "typesVersions": {
     "*": {
       ".": [
-        "./dist/renderer/+config.d.ts"
+        "./dist/src/query.d.ts"
+      ],
+      "renderer/config": [
+        "./dist/renderer/+config.h.d.ts"
       ],
       "renderer/onBeforeRender": [
         "./dist/renderer/onBeforeRender.d.ts"
+      ],
+      "renderer/client": [
+        "./dist/renderer/client.d.ts"
       ]
     }
   },

@@ -3,6 +3,7 @@ import Layout from '../layouts/LayoutDefault'
 import Head from '../layouts/HeadDefault'
 import logoUrl from '../assets/logo.svg'
 import vikeReact from 'vike-react'
+import vikeReactQuery from 'vike-react-query/config'
 
 // Default configs (can be overridden by pages)
 export default {
@@ -14,5 +15,14 @@ export default {
   description: 'Demo showcasing Vike + React',
   // <link rel="icon" href="${favicon}" />
   favicon: logoUrl,
-  extends: vikeReact
+  extends: [vikeReact, vikeReactQuery],
+  meta: {
+    onBeforeRender: {
+      env: {
+        server: true,
+        client: true
+      }
+    }
+  },
+  ssr: true
 } satisfies Config

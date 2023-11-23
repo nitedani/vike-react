@@ -9,7 +9,8 @@
     ".": "./dist/renderer/+config.js",
     "./renderer/onRenderHtml": "./dist/renderer/onRenderHtml.js",
     "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js",
-    "./usePageContext": "./dist/components/usePageContext.js"
+    "./usePageContext": "./dist/components/usePageContext.js",
+    "./renderer/internal-hooks": "./dist/renderer/internal-hooks.js"
   },
   "scripts": {
     "dev": "tsc --watch",
@@ -49,6 +50,9 @@
       ],
       "renderer/onRenderClient": [
         "./dist/renderer/onRenderClient.d.ts"
+      ],
+      "renderer/internal-hooks": [
+        "./dist/renderer/internal-hooks.d.ts"
       ]
     }
   },
