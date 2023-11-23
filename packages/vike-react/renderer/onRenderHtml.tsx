@@ -9,12 +9,11 @@ import { getTitle } from './getTitle.js'
 import { getPageElement } from './getPageElement.js'
 import { PageContextProvider } from './PageContextProvider.js'
 import React from 'react'
-import { runOnBeforeRenderHooks } from './internal-hooks.js'
 
 checkVikeVersion()
 
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
-  await runOnBeforeRenderHooks(pageContext)
+  await pageContext.config.internalOnBeforeRenderAll?.(pageContext)
 
   const lang = pageContext.config.lang || 'en'
 

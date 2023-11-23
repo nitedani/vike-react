@@ -1,0 +1,23 @@
+export default Page
+
+import React, { Suspense } from 'react'
+import { Counter } from './Counter'
+import { Movies } from './Movies'
+
+function Page() {
+  return (
+    <>
+      <h1>My Vike + React app</h1>
+      This page is:
+      <ul>
+        <li>Rendered to HTML.</li>
+        <li>
+          Interactive while loading. <Counter />
+        </li>
+      </ul>
+      <Suspense fallback="Loading...">
+        <Movies />
+      </Suspense>
+    </>
+  )
+}

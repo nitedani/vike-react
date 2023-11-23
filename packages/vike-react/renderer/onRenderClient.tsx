@@ -5,11 +5,10 @@ import ReactDOM from 'react-dom/client'
 import { getTitle } from './getTitle.js'
 import type { OnRenderClientAsync } from 'vike/types'
 import { getPageElement } from './getPageElement.js'
-import { runOnBeforeRenderHooks } from './internal-hooks.js'
 
 let root: ReactDOM.Root
 const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRenderClientAsync> => {
-  await runOnBeforeRenderHooks(pageContext)
+  await pageContext.config.internalOnBeforeRenderAll?.(pageContext)
   const page = getPageElement(pageContext)
 
   const container = document.getElementById('page-view')!

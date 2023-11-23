@@ -44,11 +44,9 @@ function StreamedHydration(props: { queryClient?: QueryClient }) {
     const onEntry = (entry: DehydratedState) => {
       hydrate(queryClient, entry)
     }
-
     for (const entry of window._rqd_) {
       onEntry(entry)
     }
-
     window._rqd_ = { push: onEntry }
   }
   return null

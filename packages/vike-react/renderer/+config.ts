@@ -1,4 +1,4 @@
-import type { Config, ConfigEffect } from 'vike/types'
+import type { Config, ConfigEffect, PageContext } from 'vike/types'
 
 // Depending on the value of `config.meta.ssr`, set other config options' `env`
 // accordingly.
@@ -58,6 +58,12 @@ export default {
     ssr: {
       env: { config: true },
       effect: toggleSsrRelatedConfig
+    },
+    onBeforeRenderAll: {
+      env: { client: true, server: true }
+    },
+    internalOnBeforeRenderAll: {
+      env: { client: true, server: true }
     }
   }
 } satisfies Config
@@ -67,6 +73,7 @@ import type { Component } from './types'
 declare global {
   namespace VikePackages {
     interface ConfigVikeReact {
+      Wrapper?: Component
       /** The page's root React component */
       Page?: Component
       /** React element rendered and appended into &lt;head>&lt;/head> */
@@ -97,6 +104,8 @@ declare global {
        *
        */
       ssr?: boolean
+
+      internalOnBeforeRenderAll?: (pageContext: PageContext) => void | Promise<void>
     }
   }
 }
