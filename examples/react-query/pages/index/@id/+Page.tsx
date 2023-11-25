@@ -32,6 +32,7 @@ const Movie = suspense(
     )
   },
   ({ id }) => `Loading movie ${id}`,
+  // Try commenting out the error fallback
   ({ error, retry }) => (
     <>
       <div>{error.message}</div>
@@ -41,7 +42,7 @@ const Movie = suspense(
 )
 
 async function getStarWarsMovie(id: string): Promise<MovieDetails> {
-  await new Promise((r) => setTimeout(r, 1000))
+  await new Promise((r) => setTimeout(r, 500))
 
   if (Math.random() > 0.5) {
     throw new Error('Failed to fetch')
