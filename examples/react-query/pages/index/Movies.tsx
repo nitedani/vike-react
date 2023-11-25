@@ -1,42 +1,36 @@
-import React, { useTransition } from 'react'
-import { MovieDetails } from './types'
+import React from 'react'
 import { suspense, useSuspenseQuery } from 'vike-react-query'
 import { navigate } from 'vike/client/router'
+import { MovieDetails } from './types'
 
-export { Movies }
+export const Movies = suspense(() => {
+  const result = useSuspenseQuery({
+    queryKey: ['key'],
+    queryFn: getStarWarsMovies
+  })
 
-const Movies = suspense(
-  () => {
-    const result = useSuspenseQuery({
-      queryKey: ['key'],
-      queryFn: getStarWarsMovies,
-      retry: false
-    })
+  const movies = result.data
 
-    const movies = result.data
+  const onNavigate = (id: string) => {
+    navigate(`/${id}`)
+  }
 
-    const onNavigate = (id: string) => {
-      navigate(`/${id}`)
-    }
-
-    return (
-      <>
-        <h1>Star Wars Movies</h1>
-        <ol>
-          {movies.map(({ id, title, release_date }) => (
-            <li key={id}>
-              <button onClick={() => onNavigate(id)}>{title}</button> ({release_date})
-            </li>
-          ))}
-        </ol>
-        <p>
-          Source: <a href="https://star-wars.brillout.com">star-wars.brillout.com</a>.
-        </p>
-      </>
-    )
-  },
-  () => 'Loading'
-)
+  return (
+    <>
+      <h1>Star Wars Movies</h1>
+      <ol>
+        {movies.map(({ id, title, release_date }) => (
+          <li key={id}>
+            <button onClick={() => onNavigate(id)}>{title}</button> ({release_date})
+          </li>
+        ))}
+      </ol>
+      <p>
+        Source: <a href="https://star-wars.brillout.com">star-wars.brillout.com</a>.
+      </p>
+    </>
+  )
+}, 'Loading movies...')
 
 async function getStarWarsMovies(): Promise<MovieDetails[]> {
   await new Promise((r) => setTimeout(r, 1000))

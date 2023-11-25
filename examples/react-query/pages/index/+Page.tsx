@@ -15,9 +15,7 @@ function Page() {
           Interactive while loading. <Counter />
         </li>
       </ul>
-      <Suspense fallback="Loading...">
-        <Movies />
-      </Suspense>
+      <Movies />
     </>
   )
 }
