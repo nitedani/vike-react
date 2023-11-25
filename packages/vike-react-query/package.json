@@ -3,12 +3,13 @@
   "name": "vike-react-query",
   "version": "0.3.4",
   "type": "module",
-  "main": "dist/index.js",
-  "typings": "dist/index.js",
+  "main": "dist/src/index.js",
+  "typings": "dist/src/index.js",
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./dist/src/index.js",
     "./config": "./dist/renderer/+config.h.js",
-    "./renderer/internalOnBeforeRenderAll": "./dist/renderer/internalOnBeforeRenderAll.js"
+    "./renderer/internalOnBeforeRenderAll": "./dist/renderer/internalOnBeforeRenderAll.js",
+    "./renderer/FallbackErrorBoundary": "./dist/renderer/FallbackErrorBoundary.js"
   },
   "scripts": {
     "dev": "tsc --watch",
@@ -33,10 +34,11 @@
     "vike": "^0.4.147"
   },
   "dependencies": {
-    "react-streaming": "^0.3.16",
+    "@brillout/json-serializer": "^0.5.8",
     "@tanstack/react-query": "^5.8.4",
     "devalue": "^4.3.2",
-    "@brillout/json-serializer": "^0.5.8",
+    "react-error-boundary": "^4.0.11",
+    "react-streaming": "^0.3.16",
     "vike-react": "workspace:*"
   },
   "typesVersions": {

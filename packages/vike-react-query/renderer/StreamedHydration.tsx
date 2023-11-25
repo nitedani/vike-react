@@ -18,9 +18,8 @@ declare global {
  * - hydrating the query client on the client
  * - if react-streaming is not used, it doesn't do anything
  */
-function StreamedHydration(props: { queryClient?: QueryClient }) {
+function StreamedHydration({ client }: { client: QueryClient }) {
   const stream = useStream()
-  const queryClient = useQueryClient(props.queryClient)
 
   if (import.meta.env.SSR && stream) {
     stream.injectToStream(
@@ -28,11 +27,11 @@ function StreamedHydration(props: { queryClient?: QueryClient }) {
         document.getElementsByClassName("_rqd_")
       ).forEach((e) => e.remove())};_rqc_()</script>`
     )
-    queryClient.getQueryCache().subscribe((event) => {
+    client.getQueryCache().subscribe((event) => {
       if (['added', 'updated'].includes(event.type) && event.query.state.status === 'success')
         stream.injectToStream(
           `<script class="_rqd_">_rqd_.push(${uneval(
-            dehydrate(queryClient, {
+            dehydrate(client, {
               shouldDehydrateQuery: (query) => query.queryHash === event.query.queryHash
             })
           )});_rqc_()</script>`
@@ -42,7 +41,7 @@ function StreamedHydration(props: { queryClient?: QueryClient }) {
 
   if (!import.meta.env.SSR && Array.isArray(window._rqd_)) {
     const onEntry = (entry: DehydratedState) => {
-      hydrate(queryClient, entry)
+      hydrate(client, entry)
     }
     for (const entry of window._rqd_) {
       onEntry(entry)

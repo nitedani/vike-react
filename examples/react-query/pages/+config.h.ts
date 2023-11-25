@@ -15,5 +15,6 @@ export default {
   description: 'Demo showcasing Vike + React',
   // <link rel="icon" href="${favicon}" />
   favicon: logoUrl,
-  extends: [vikeReact, vikeReactQuery]
+  extends: [vikeReact, vikeReactQuery],
+  passToClient: ['routeParams']
 } satisfies Config

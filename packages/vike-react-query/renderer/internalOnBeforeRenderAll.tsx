@@ -7,19 +7,34 @@ import { StreamedHydration } from './StreamedHydration'
 let queryClientGlobal: QueryClient | undefined
 
 export default function internalOnBeforeRenderAll(pageContext: PageContext) {
-  const { Page, config } = pageContext
+  const {
+    Page,
+    config: { queryClientConfig, FallbackErrorBoundary = PassThrough }
+  } = pageContext
+
+  if (!Page) {
+    return
+  }
 
   if (!import.meta.env.SSR && !queryClientGlobal) {
-    queryClientGlobal = new QueryClient(config.queryClientConfig)
+    queryClientGlobal = new QueryClient(queryClientConfig)
   }
-  const queryClient = queryClientGlobal ?? new QueryClient(config.queryClientConfig)
+  const queryClient = queryClientGlobal ?? new QueryClient(queryClientConfig)
 
   if (Page) {
     pageContext.Page = (props) => (
-      <QueryClientProvider client={queryClient}>
-        <StreamedHydration />
-        <Page {...props} />
-      </QueryClientProvider>
+      <>
+        <StreamedHydration client={queryClient} />
+        <QueryClientProvider client={queryClient}>
+          <FallbackErrorBoundary>
+            <Page {...props} />
+          </FallbackErrorBoundary>
+        </QueryClientProvider>
+      </>
     )
   }
+}
+
+function PassThrough({ children }: any) {
+  return <>{children}</>
 }

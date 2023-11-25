@@ -3,7 +3,6 @@ export default LayoutDefault
 import './style.css'
 import React from 'react'
 import logoUrl from '../assets/logo.svg'
-import { Link } from '../components/Link'
 
 function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
@@ -16,7 +15,6 @@ function LayoutDefault({ children }: { children: React.ReactNode }) {
     >
       <Sidebar>
         <Logo />
-        <Link href="/">Welcome</Link>
       </Sidebar>
       <Content>{children}</Content>
     </div>
