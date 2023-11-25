@@ -35,7 +35,7 @@ const Movie = suspense(
   // Try commenting out the error fallback
   ({ id, error, retry }) => (
     <>
-      <div>Loading of movie {id} failed</div>
+      <div>Loading movie {id} failed</div>
       <div>{error.message}</div>
       <button onClick={retry}>Try again</button>
     </>
