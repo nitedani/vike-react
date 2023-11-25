@@ -28,7 +28,7 @@ export function suspense<T extends object = Record<string, never>>(
             if (typeof ErrorFallback === 'function') {
               const CurrentErrorFallback = ErrorFallback
               //@ts-ignore
-              ErrorFallback = ({ error: originalError, resetErrorBoundary, ...rest }: T & FallbackProps) => {
+              ErrorFallback = ({ error: originalError, resetErrorBoundary }: FallbackProps) => {
                 const onRetry = ({ retryQuery = true }) => {
                   if (retryQuery) {
                     reset()
@@ -43,7 +43,7 @@ export function suspense<T extends object = Record<string, never>>(
                 }
 
                 //@ts-ignore
-                return <CurrentErrorFallback retry={onRetry} error={error} {...rest} />
+                return <CurrentErrorFallback {...componentProps} retry={onRetry} error={error} />
               }
             }
 
