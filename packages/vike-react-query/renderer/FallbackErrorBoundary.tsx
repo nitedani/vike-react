@@ -2,26 +2,29 @@ import { QueryErrorResetBoundary } from '@tanstack/react-query'
 import React, { CSSProperties, ReactElement } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
-export default ({ children }: { children: ReactElement }) => (
-  <QueryErrorResetBoundary>
-    {({ reset }) => (
-      <ErrorBoundary
-        onReset={reset}
-        fallbackRender={({ resetErrorBoundary, error }) => (
-          <div style={pageStyle}>
-            <div style={textStyle}>Oops! There was an error.</div>
-            <button style={buttonStyle} onClick={() => resetErrorBoundary()}>
-              Try again
-            </button>
-            {import.meta.env.DEV && <pre>{getErrorStack(error)}</pre>}
-          </div>
-        )}
-      >
-        {children}
-      </ErrorBoundary>
-    )}
-  </QueryErrorResetBoundary>
-)
+export default ({ children }: { children: ReactElement }) =>
+  import.meta.env.DEV ? (
+    <QueryErrorResetBoundary>
+      {({ reset }) => (
+        <ErrorBoundary
+          onReset={reset}
+          fallbackRender={({ resetErrorBoundary, error }) => (
+            <div style={pageStyle}>
+              <div style={textStyle}>Oops! There was an error.</div>
+              <button style={buttonStyle} onClick={() => resetErrorBoundary()}>
+                Try again
+              </button>
+              <pre>{getErrorStack(error)}</pre>
+            </div>
+          )}
+        >
+          {children}
+        </ErrorBoundary>
+      )}
+    </QueryErrorResetBoundary>
+  ) : (
+    children
+  )
 
 function getErrorStack(error: unknown) {
   if (error && error instanceof Error) {
